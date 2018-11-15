@@ -3,7 +3,7 @@
 
 void fillMatrix(float *arr, int size){
 	for(int i=0; i<size; i++){
-		arr[i] = (float)rand() / (float)(RAND_MAX/100);
+		arr[i] = i;
 	}
 	return;
 	
@@ -17,6 +17,7 @@ int transpose(float *input, float *output, int N, int B){
 		for(int c=0; c<binr; c++)
 			for(int br=0; br<B; br++)
 				for(int bc=0; bc<B; bc++){
+					//printf("%d\t%d\n", (((c*B)+bc)*N + ((r*B) + br)),( ((r*B)+br)*N + ((c*B)+bc)) );
 					output[((c*B)+bc)*N + ((r*B)+br) ] = input[((r*B)+br)*N + ((c*B)+bc)];							
 					//printf("%f\t%d\n", input[((r*B)+br)*N + ((c*B)+bc)], (((r*B)+br)*N + ((c*B)+bc)) );
 				}		
@@ -39,8 +40,10 @@ int main(int argc, char *argv[]){
 	
 	fillMatrix(input, matrixSize);
 	int count =0;
+	/*
 	while(count< matrixSize){
-		printf("%f\t%d\n", input[count], count++);
+		printf("%f\t%d\n", input[count], count);
+		count++;
 	}
 	printf("-----------\n");
 	if(transpose(input, output, atoi(argv[1]), atoi(argv[2])) < 0){
@@ -49,8 +52,10 @@ int main(int argc, char *argv[]){
 	}
 	count=0;
 	while(count < matrixSize){
-		printf("%f\t%d\n", output[count], count++);
+		printf("%f\t%d\n", output[count], count);
+		count++;
 	}
-
+	*/
+	
 	return 0;
 }
