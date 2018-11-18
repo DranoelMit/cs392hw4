@@ -8,7 +8,6 @@ void fillMatrix(float *arr, int size){
 		arr[i] = (float)rand();
 	}
 	return;
-	
 }
 
 int transpose(float *input, float *output, int N, int B){
@@ -29,9 +28,10 @@ int transpose(float *input, float *output, int N, int B){
 int main(int argc, char *argv[]){
 
 	if(argc!=3){
-	printf("Invalid number of arguments\n Proper format: transp <matrix width> <block width>\n");
-	return -1;	
+		printf("Invalid number of arguments\n Proper format: transp <matrix width> <block width>\n");
+		return -1;	
 	}
+
 	//both argv[1] and argv[2] should be powers of 2
 	int matrixSize = atoi(argv[1])  * atoi(argv [1]);
 	float *input = malloc(matrixSize * sizeof(float));
@@ -41,6 +41,7 @@ int main(int argc, char *argv[]){
 	
 	struct timeval before;
 	struct timeval after;
+
 	gettimeofday(&before, NULL);
 	if(transpose(input, output, atoi(argv[1]), atoi(argv[2])) < 0){
 		printf("error");

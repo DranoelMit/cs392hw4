@@ -8,7 +8,6 @@ void fillMatrix(float *arr, int size){
 		arr[i] = (float)rand();
 	}
 	return;
-	
 }
 
 int transpose(float *input, float *output, int H, int W, int B){
@@ -29,9 +28,10 @@ int transpose(float *input, float *output, int H, int W, int B){
 int main(int argc, char *argv[]){
 
 	if(argc!=4){
-	printf("Invalid number of arguments\n Proper format: transpif <matrix height> <matrix width> <block width>\n");
-	return -1;	
+		printf("Invalid number of arguments\n Proper format: transpif <matrix height> <matrix width> <block width>\n");
+		return -1;	
 	}
+
 	int matrixSize = atoi(argv[1])  * atoi(argv[2]);
 	float *input = malloc(matrixSize * sizeof(float));
 	float *output = malloc(matrixSize * sizeof(float));
@@ -40,6 +40,7 @@ int main(int argc, char *argv[]){
 	
 	struct timeval before;
 	struct timeval after;
+
 	gettimeofday(&before, NULL);
 	if(transpose(input, output, atoi(argv[1]), atoi(argv[2]), atoi(argv[3])) < 0){
 		printf("error");
@@ -47,7 +48,6 @@ int main(int argc, char *argv[]){
 	}
 	gettimeofday(&after, NULL);
 
-//	printf("\tbefore %ld\n\tafter %ld\n", before.tv_sec*1000 + before.tv_usec, after.tv_sec*1000 + after.tv_usec);
 	long difference =  ((long)(after.tv_sec)*1000000+after.tv_usec )  - ((long)(before.tv_sec)*1000000+before.tv_usec );
 	printf("T: %li microseconds\n", difference); 
 	
