@@ -19,11 +19,8 @@ int transpose(float *input, float *output, int N, int B){
 		for(int c=0; c<binr; c++)
 			for(int br=0; br<B; br++)
 				for(int bc=0; bc<B; bc++){
-					//printf("%d\t%d\n", (((c*B)+bc)*N + ((r*B) + br)),( ((r*B)+br)*N + ((c*B)+bc)) );
 					output[((c*B)+bc)*N + ((r*B)+br) ] = input[((r*B)+br)*N + ((c*B)+bc)];							
-					//printf("%f\t%d\n", input[((r*B)+br)*N + ((c*B)+bc)], (((r*B)+br)*N + ((c*B)+bc)) );
 				}		
-	//print input and output matrices
 	return 0;
 }
 
@@ -41,13 +38,7 @@ int main(int argc, char *argv[]){
 	float *output = malloc(matrixSize * sizeof(float));
 	
 	fillMatrix(input, matrixSize);
-	int count =0;
-	/*
-	while(count< matrixSize){
-		printf("%f\t%d\n", input[count], count);
-		count++;
-	}
-	printf("-----------\n"); */
+	
 	struct timeval before;
 	struct timeval after;
 	gettimeofday(&before, NULL);
@@ -57,17 +48,8 @@ int main(int argc, char *argv[]){
 	}
 	gettimeofday(&after, NULL);
 
-//	printf("\tbefore %ld\n\tafter %ld\n", before.tv_sec*1000 + before.tv_usec, after.tv_sec*1000 + after.tv_usec);
 	long difference =  ((long)(after.tv_sec)*1000000+after.tv_usec )  - ((long)(before.tv_sec)*1000000+before.tv_usec );
 	printf("T: %li microseconds\n", difference); 
-	
-	/*
-	count=0;
-	while(count < matrixSize){
-		printf("%f\t%d\n", output[count], count);
-		count++;
-	}
-	*/
 	
 	return 0;
 }

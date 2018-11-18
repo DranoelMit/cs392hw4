@@ -32,19 +32,12 @@ int main(int argc, char *argv[]){
 	printf("Invalid number of arguments\n Proper format: transpif <matrix height> <matrix width> <block width>\n");
 	return -1;	
 	}
-	//both argv[1] and argv[2] should be powers of 2
 	int matrixSize = atoi(argv[1])  * atoi(argv[2]);
 	float *input = malloc(matrixSize * sizeof(float));
 	float *output = malloc(matrixSize * sizeof(float));
 	
 	fillMatrix(input, matrixSize);
-	int count =0;
 	
-	while(count< matrixSize){
-		printf("%f\t%d\n", input[count], count);
-		count++;
-	}
-	printf("-----------\n"); 
 	struct timeval before;
 	struct timeval after;
 	gettimeofday(&before, NULL);
@@ -56,15 +49,7 @@ int main(int argc, char *argv[]){
 
 //	printf("\tbefore %ld\n\tafter %ld\n", before.tv_sec*1000 + before.tv_usec, after.tv_sec*1000 + after.tv_usec);
 	long difference =  ((long)(after.tv_sec)*1000000+after.tv_usec )  - ((long)(before.tv_sec)*1000000+before.tv_usec );
-	//printf("T: %li microseconds\n", difference); 
-	
-	
-	count=0;
-	while(count < matrixSize){
-		printf("%f\t%d\n", output[count], count);
-		count++;
-	}
-	
+	printf("T: %li microseconds\n", difference); 
 	
 	return 0;
 }
