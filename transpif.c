@@ -47,7 +47,6 @@ int main(int argc, char *argv[]){
 	}
 	gettimeofday(&after, NULL);
 
-//	printf("\tbefore %ld\n\tafter %ld\n", before.tv_sec*1000 + before.tv_usec, after.tv_sec*1000 + after.tv_usec);
 	long difference =  ((long)(after.tv_sec)*1000000+after.tv_usec )  - ((long)(before.tv_sec)*1000000+before.tv_usec );
 	printf("T: %li microseconds\n", difference); 
 	
