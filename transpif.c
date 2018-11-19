@@ -50,6 +50,8 @@ int main(int argc, char *argv[]){
 
 	long difference =  ((long)(after.tv_sec)*1000000+after.tv_usec )  - ((long)(before.tv_sec)*1000000+before.tv_usec );
 	printf("T: %li microseconds\n", difference); 
-	
+
+	free(input);
+	free(output);	
 	return 0;
 }
